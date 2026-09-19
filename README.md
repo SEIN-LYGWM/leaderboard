@@ -40,10 +40,8 @@ Each submission is a single JSON file added to `submissions/` with this structur
 > For any field where the information is unavailable or not applicable, write `"N/A"` and explain the reason in the "notes" field.
 > The current default `robocasa_version` is `1.0.1` until a new update is announced.
 
+Here’s a sample JSON: [gr00t_n1.5_2026_05_19.json](https://github.com/robocasa-benchmark/leaderboard/blob/main/submissions/gr00t_n1.5_2026_05_19.json)
+
 ### Model icon (optional)
 
 To show a logo next to your model on the leaderboard, add a square image (256px or larger; `.png` or `.svg`) to the `icons/` folder in the same pull request, named after your submission JSON file. For example, `submissions/my-model_2026_09_01.json` pairs with `icons/my-model_2026_09_01.png`. Without an icon, the leaderboard shows a letter tile with your model's initial.
-
-The optional `"accent"` field (a hex color such as `"#76b900"`, typically your logo's primary color) sets the hover highlight color of your model's name on the leaderboard.
-
-Here’s a sample JSON: [gr00t_n1.5_2026_05_19.json](https://github.com/robocasa-benchmark/leaderboard/blob/main/submissions/gr00t_n1.5_2026_05_19.json)
