@@ -1,0 +1,19 @@
+{
+  "model_name": "Phasor_m7",
+  "submitter": "Phasor",
+  "date": "2026-09-15",
+  "robocasa_version": "1.0.1",
+  "atomic_seen_success": 78.67,
+  "composite_seen_success": 57.38,
+  "composite_unseen_success": 31.50,
+  "code_url": "https://github.com/Phasor-inc/minimalist_m7",
+  "commit_hash": "6ab9dbeac7db590f97ee50cdc423c8337bb47600",
+  "checkpoint_url": "https://huggingface.co/Project-Phasor/phasor-m7-robocasa365",
+  "paper_link": "N/A",
+  "open_source": "no",
+  "wandb": "N/A",
+  "training_config": {
+    "batch_size": 48,
+    "num_training_steps": 220
+  },
+  "notes": " This submission beats baseline on composite_unseen (+0.75pt) and is essentially tied on atomic_seen/composite_seen/overall. code_url is a private GitHub repo with the full training/eval code, tests, NOTES.md dev log, and raw per-episode eval evidence."
