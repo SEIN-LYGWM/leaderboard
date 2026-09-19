@@ -15,5 +15,5 @@
     "batch_size": 48,
     "num_training_steps": 220
   },
-  "notes": " This submission beats baseline on composite_unseen (+0.75pt) and is essentially tied on atomic_seen/composite_seen/overall. code_url is a private GitHub repo with the full training/eval code, tests, NOTES.md dev log, and raw per-episode eval evidence."
+  "notes": "Model based off of Xiaomi-Robotics-1-RoboCasa365. This submission beats baseline on composite_unseen (+0.75pt) and is essentially tied on atomic_seen/composite_seen/overall. code_url is a private GitHub repo with the full training/eval code, tests, NOTES.md dev log, and raw per-episode eval evidence."
 }
