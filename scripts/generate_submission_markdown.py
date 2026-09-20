@@ -68,7 +68,11 @@ def _linkify_notes(notes: str) -> str:
 # Manual override for the PR link shown in markdown (not part of the submission
 # JSON / schema). Normally the PR is auto-detected from git history (see
 # `_pr_url_from_git`); only add an entry here to pin or correct a link.
-SUBMISSION_PR_URLS: dict[str, str] = {}
+SUBMISSION_PR_URLS: dict[str, str] = {
+    # Renamed after merge (Phasor_minimalist.json -> Phasor_m7_2026_09_15.json), so the
+    # auto-detection sees the rename commit instead of the PR merge.
+    "Phasor_m7_2026_09_15.json": "https://github.com/robocasa-benchmark/leaderboard/pull/16",
+}
 
 
 def _pr_url_from_git(filename: str) -> str | None:
