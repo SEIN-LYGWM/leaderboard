@@ -1,0 +1,25 @@
+{
+  "model_name": "LY-GWM-RoboCasa-Human300",
+  "submitter": "北京市密网信息科技有限公司",
+  "date": "2026-09-20",
+  "robocasa_version": "1.0.1",
+  "atomic_seen_success": 15.666666666666668,
+  "composite_seen_success": 5.0,
+  "composite_unseen_success": 2.375,
+  "code_url": "https://github.com/SEIN-LYGWM/LY-GWM-RoboCasa-Human300-eval",
+  "commit_hash": "e4b9d4c61413ed1b83af6089a52d937404e05c9c",
+  "checkpoint_url": "https://huggingface.co/lygwm-review/LY-GWM-RoboCasa-Human300/tree/388a4174a427382aa608e6eff434fa6a30f0d935",
+  "paper_link": "N/A",
+  "open_source": "no",
+  "wandb": "N/A",
+  "training_config": {
+    "batch_size": 128,
+    "num_training_steps": 120000
+  },
+  "notes": "RoboCasa 1.0.1, split=pretrain, 50 tasks with 50 episodes per task; 200/2500 successes (8.00% overall). GR00T N1.5 was fine-tuned on Human300 for 120000 updates with global batch size 128. The separately trained, action-conditioned LY-GWM graph dynamics module contains 10237204 parameters and was trained for 33750 updates with batch size 32. The combined system contains 2734400724 distinct parameters. During evaluation, GR00T N1.5 generates candidate action sequences. LY-GWM takes the current observation features, robot state and candidate actions as inputs and predicts their future features and robot states. A downstream decision module evaluates these predicted outcomes against the task objective and selects the action sequence to execute. LY-GWM's predictions therefore influence action selection within the executed policy. This architecture combines GR00T N1.5's action-generation capability with LY-GWM's learned prediction of action consequences. The graph dynamics module models relationships and interactions relevant to state transitions, providing predictive information for evaluating candidate actions. Its intended advantage is to help distinguish actions by their anticipated effects, including whether they support subsequent stages of a composite task. The evaluated system achieved 15.667% Atomic-Seen success, 5.000% Composite-Seen success and 2.375% Composite-Unseen success. Compared with our independently fine-tuned GR00T N1.5 baseline, the observed differences were 0.000, +1.875 and +0.500 percentage points, respectively; overall success increased from 7.240% to 8.000%."
+}
+
+
+
+
+
