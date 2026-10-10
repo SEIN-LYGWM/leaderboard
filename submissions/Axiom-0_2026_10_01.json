@@ -16,5 +16,5 @@
     "batch_size": 2048,
     "num_training_steps": 30000
   },
-  "notes": "Results of Axiom-Robocasa365."
+  "notes": "Results of Axiom-Robocasa365. This model is a full fine-tune of Xiaomi-Robotics-1 with added self-refinement modules."
 }
