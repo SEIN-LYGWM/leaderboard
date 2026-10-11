@@ -56,4 +56,4 @@ To show a logo next to your model on the leaderboard, add a square image (256px 
 
 ## Questions
 
-If you have any questions about the benchmark or the submission process, reach out at [sep@cs.utexas.edu](mailto:sep@cs.utexas.edu).
+If you have any questions about the benchmark or the submission process, reach out at [robocasa@googlegroups.com](mailto:robocasa@googlegroups.com).
