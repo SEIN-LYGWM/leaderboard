@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -235,25 +236,56 @@ def _accent_from_icon(icon_filename: str) -> str | None:
     return f"#{r:02x}{g:02x}{b:02x}"
 
 
-def _accent_from_svg(icon_filename: str) -> str | None:
-    """Pick the most saturated fill color named in an SVG icon."""
-    import re
+_SVG_COLOR_RE = re.compile(
+    r'(?:fill|stop-color)\s*[:=]\s*["\']?\s*'
+    r"(#[0-9a-fA-F]{6}\b|#[0-9a-fA-F]{3}\b|rgb\(\s*[^)]*\))",
+    re.IGNORECASE,
+)
 
+
+def _svg_colors(text: str) -> list[tuple[int, int, int]]:
+    """Colors from fill / stop-color, as attributes or CSS (hex or rgb(), ints or %)."""
+    colors = []
+    for value in _SVG_COLOR_RE.findall(text):
+        if value.startswith("#"):
+            h = value[1:]
+            if len(h) == 3:
+                h = "".join(c * 2 for c in h)
+            colors.append(tuple(int(h[i : i + 2], 16) for i in (0, 2, 4)))
+            continue
+        parts = [p.strip() for p in value[value.index("(") + 1 : -1].split(",")]
+        if len(parts) != 3:
+            continue
+        try:
+            rgb = tuple(
+                round(float(p[:-1]) * 2.55) if p.endswith("%") else round(float(p))
+                for p in parts
+            )
+        except ValueError:
+            continue
+        colors.append(tuple(max(0, min(255, c)) for c in rgb))
+    return colors
+
+
+def _accent_from_svg(icon_filename: str) -> str | None:
+    """Pick the most saturated color an SVG icon paints with."""
     try:
         text = (ICONS_DIR / icon_filename).read_text(encoding="utf-8")
     except OSError:
         return None
-    best = None  # (saturation, hex)
-    for match in re.findall(r'fill="#([0-9a-fA-F]{6})"', text):
-        r, g, b = (int(match[i : i + 2], 16) for i in (0, 2, 4))
+    best = None  # (saturation, (r, g, b))
+    for r, g, b in _svg_colors(text):
+        if min(r, g, b) > 235:  # white / background
+            continue
         sat = max(r, g, b) - min(r, g, b)
         if best is None or sat > best[0]:
-            best = (sat, f"#{match.lower()}")
+            best = (sat, (r, g, b))
     if best is None:
         return None
     if best[0] < 40:  # monochrome mark
         return "#111111"
-    return best[1]
+    r, g, b = best[1]
+    return f"#{r:02x}{g:02x}{b:02x}"
 
 
 def main() -> None:
