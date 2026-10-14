@@ -6,8 +6,11 @@
     "atomic_seen_success": 75.6,
     "composite_seen_success": 37.7, 
     "composite_unseen_success": 3.3,
+    "code_url": "https://github.com/amap-cvlab/ABot-Manipulation",
+    "commit_hash": "7642747ed2817b241dde5df06e17ee80192718ad",
+    "checkpoint_url": "https://huggingface.co/acvlab/ABot-M0.5-RoboCasa365",
     "paper_link": "https://arxiv.org/abs/2607.00678",
-    "open_source": "no",
+    "open_source": "yes",
     "training_config": {
       "batch_size": 64,
       "num_training_steps": 100000
