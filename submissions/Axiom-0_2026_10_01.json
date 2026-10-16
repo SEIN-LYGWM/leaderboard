@@ -9,7 +9,7 @@
   "code_url": "N/A",
   "commit_hash": "N/A",
   "checkpoint_url": "N/A",
-  "paper_link": "N/A",
+  "paper_link": "http://arxiv.org/abs/2610.14155",
   "open_source": "no",
   "wandb": "N/A",
   "training_config": {
